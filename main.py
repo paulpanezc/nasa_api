@@ -37,5 +37,5 @@ def senamhi(period: str, station_code: str, station_type: str):
     return helper.get_station_info()
 
 
-if __name__ == "__main__":
-    uvicorn.run(app, debug=True, host='0.0.0.0', port=int(os.environ.get('PORT', 8080)))
+# if __name__ == "__main__":
+#     uvicorn.run(app, debug=True, host='0.0.0.0', port=int(os.environ.get('PORT', 8080)))
