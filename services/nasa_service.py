@@ -7,7 +7,7 @@ class NasaService():
 
     def calculate_total_accumulated_precipitation(self, year, latitude, longitude):
         # Doc: https://power.larc.nasa.gov/api/pages/?urls.primaryName=Daily
-        url = f"https://power.larc.nasa.gov/api/projection/daily/point?start={year}0101&
+        url = f"https://power.larc.nasa.gov/api/projection/daily/point?start={year}0101& \
                 end={year}1231&latitude={latitude}&longitude={longitude}&community=ag&parameters=PRECTOTCORR"
         response = requests.get(url)
         nasa_data = response.text
