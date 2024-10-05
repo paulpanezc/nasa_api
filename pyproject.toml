@@ -1,0 +1,17 @@
+[tool.poetry]
+name = "nasa-api"
+version = "0.1.0"
+description = ""
+authors = ["Paul Martin Panez Caballero <ppanezuni@gmail.com>"]
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "^3.12"
+fastapi = {extras = ["standard"], version = "^0.115.0"}
+requests = "^2.32.3"
+beautifulsoup4 = "^4.12.3"
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
