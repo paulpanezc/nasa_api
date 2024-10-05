@@ -12,7 +12,7 @@ stations = {
 }
 
 
-class SenamhiHelper():
+class SenamhiService():
     def __init__(self, period, station_code, station_type):
         self.period = period
         self.station_code = station_code
@@ -23,9 +23,6 @@ class SenamhiHelper():
         i = 0
         for row in table("tr"):
             measurement = {}
-            print("-"*117)
-            print(row)
-            print("-"*117)
             if i > 1:
                 if self.station_type == "CO":
                     measurement["date"] = row("td")[0].text.strip()

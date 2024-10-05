@@ -2,10 +2,11 @@ from typing import Union
 
 from fastapi import FastAPI
 
-from helpers.senamhi_helper import SenamhiHelper
+from services.senamhi_service import SenamhiService
+from services.nasa_service import NasaService
 
-import uvicorn
-import os
+# import uvicorn
+# import os
 
 
 app = FastAPI()
@@ -33,8 +34,14 @@ def nasa_climatic(item_id: int, q: Union[str, None] = None):
 
 @app.get("/senamhi/")
 def senamhi(period: str, station_code: str, station_type: str):
-    helper = SenamhiHelper(period, station_code, station_type)
-    return helper.get_station_info()
+    service = SenamhiService(period, station_code, station_type)
+    return service.get_station_info()
+
+
+@app.get("/nasa/precipitation")
+def senamhi(year: str, latitude: str, longitude: str):
+    service = NasaService()
+    return service.calculate_total_accumulated_precipitation(year, latitude, longitude)
 
 
 # if __name__ == "__main__":
