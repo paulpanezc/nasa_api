@@ -5,6 +5,7 @@ from fastapi import FastAPI
 from helpers.senamhi_helper import SenamhiHelper
 
 import uvicorn
+import os
 
 
 app = FastAPI()
