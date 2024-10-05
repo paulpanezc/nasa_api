@@ -4,6 +4,8 @@ from fastapi import FastAPI
 
 from helpers.senamhi_helper import SenamhiHelper
 
+import uvicorn
+
 
 app = FastAPI()
 
@@ -32,3 +34,7 @@ def nasa_climatic(item_id: int, q: Union[str, None] = None):
 def senamhi(period: str, station_code: str, station_type: str):
     helper = SenamhiHelper(period, station_code, station_type)
     return helper.get_station_info()
+
+
+if __name__ == "__main__":
+    uvicorn.run(app, host='0.0.0.0', port=int(os.environ.get('PORT', 8080)))

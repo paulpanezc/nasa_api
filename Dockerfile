@@ -1,11 +1,13 @@
-FROM python:3.12-slim-buster
+FROM python:3.10-slim
 
-WORKDIR /python-docker
+ENV PYTHONUNBUFFERED True
 
-COPY requirements.txt requirements.txt
+COPY team_league/service/requirements.txt ./
 
-RUN pip3 install -r requirements.txt
+RUN pip install -r requirements.txt
 
-COPY . . 
+ENV APP_HOME /app
+WORKDIR $APP_HOME
+COPY team_league $APP_HOME/team_league
 
-CMD ["python3", "-m", "flask", "run", "--host=0.0.0.0"]
+CMD ["uvicorn", "team_league.service.main:app", "--host", "0.0.0.0", "--port", "8080"]
