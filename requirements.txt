@@ -2,3 +2,5 @@ beautifulsoup4
 requests
 fastapi[standard]
 uvicorn[standard]
+shapely
+geopy
