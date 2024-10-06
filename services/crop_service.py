@@ -9,6 +9,7 @@ PRODUCTS = [
         "max_temperature_required": 25,
         "min_precipitation_required": 300,
         "max_precipitation_required": 600,
+        "days_season": 120
         # "min_ph_required": 6,
         # "max_ph_required": 8.5,
         # "min_altitude_required": "",
@@ -59,12 +60,15 @@ class CropService():
     def get_max_precipitation_required(self):
         return self.get_climatic_parameter("max_precipitation_required")
     
+    def get_days_season(self):
+        return self.get_climatic_parameter("days_season")
+    
     # def get_min_altitude_required(self):
     #     return self.get_climatic_parameter("get_min_altitude_required")
     
     # def get_max_altitude_required(self):
     #     return self.get_climatic_parameter("get_max_altitude_required")
-    
+
     def is_available(self):
         # alpha = 0.3
         # beta = 0.7

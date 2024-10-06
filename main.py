@@ -1,4 +1,4 @@
-from datetime import datetime
+from datetime import datetime, timedelta
 
 from typing import Union
 
@@ -50,11 +50,12 @@ app = FastAPI()
 
 
 @app.get("/api/rocket/availability")
-def rocket(product_name: str, start_season_datetime: datetime, end_season_datetime: datetime, coordinates: Union[str, None] = None):
+def rocket(product_name: str, start_season_datetime: datetime, coordinates: Union[str, None] = None): # end_season_datetime: datetime, 
     start_season = start_season_datetime.strftime("%Y%m%d")
-    end_season = end_season_datetime.strftime("%Y%m%d")
     list_coordinates = json.loads(coordinates)
     crop = CropService(product_name, coordinates)
+    end_season_datetime = start_season_datetime + timedelta(days=crop.get_days_season())
+    end_season = end_season_datetime.strftime("%Y%m%d")
     # crop.area = crop.calculate_area()
     climatic = NasaService(start_season, end_season, float(list_coordinates[0]["latitude"]), float(list_coordinates[0]["longitude"]))
     crop.total_accumulated_precipitation = climatic.calculate_total_accumulated_precipitation()
